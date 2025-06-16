@@ -23,7 +23,8 @@ export const MatchEditor: React.FC<MatchEditorProps> = ({ match, onUpdate }) => 
   const { toast } = useToast();
 
   const formatDate = (date: string) => {
-    return new Date(date).toLocaleDateString('pt-BR');
+    const [year, month, day] = date.split('-').map(Number);
+    return new Date(year, month - 1, day).toLocaleDateString('pt-BR');
   };
 
   const formatTime = (time: string) => {
